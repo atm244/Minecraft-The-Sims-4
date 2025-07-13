@@ -1,0 +1,747 @@
+/* minecraft.css - ไฟล์สไตล์สำหรับหน้า Landing Page ใหม่ (ธีม Minecraft) */
+
+/* --- 1. Global Styles (การตั้งค่าทั่วไป) --- */
+/* รีเซ็ตค่าเริ่มต้นของเบราว์เซอร์ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* นำเข้าฟอนต์จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* หรือถ้าคุณดาวน์โหลดฟอนต์ Minecraftia มาเอง ให้ใช้ @font-face แทน */
+/* @font-face {
+    font-family: 'Minecraftia';
+    src: url('fonts/Minecraftia.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+
+/* สไตล์สำหรับ HTML (สำหรับ Parallax Effect ถ้าคุณยังใช้อยู่) */
+html {
+    height: 100%;
+    overflow-y: scroll; /* ให้ HTML มี Scrollbar แทน Body */
+    scroll-behavior: smooth; /* เพื่อการเลื่อนที่นุ่มนวล */
+}
+
+/* สไตล์สำหรับ Body ของหน้าเว็บ */
+body {
+    min-height: 100vh;
+    color: #E0E0E0; /* สีข้อความเริ่มต้นที่ดูเป็น Minecraft มากขึ้น (เทาอ่อน) */
+    font-family: 'Press Start 2P', cursive, sans-serif; /* ฟอนต์สไตล์พิกเซล */
+    
+    position: relative;
+    overflow: hidden; /* ซ่อนเนื้อหาที่ล้นออกจาก Body */
+    
+    transition: background-image 0.8s ease-in-out, background-color 0.8s ease-in-out, opacity 0.8s ease-in-out; 
+
+    /* พื้นหลังเริ่มต้นของเว็บไซต์ (รูปภาพ Minecraft) */
+    background-image: url('https://w.wallhaven.cc/full/we/wallhaven-wemkjp.png'); /* เปลี่ยนเป็นรูป Minecraft ของคุณ */
+    background-color: #3B3B3B; /* สีสำรองถ้าโหลดภาพไม่ได้ (เทาเข้มๆ) */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* สำหรับ Parallax Effect */
+    
+    opacity: 1; 
+
+    /* หากต้องการ Zoom Effect ให้ uncomment บรรทัดด้านล่าง และ Keyframes */
+    /* animation: zoomBackground 20s infinite alternate ease-in-out; */
+}
+
+/* กำหนด Keyframes สำหรับการซูมพื้นหลัง (ถ้าคุณเลือกใช้ Zoom Effect) */
+/* @keyframes zoomBackground {
+    0% { background-size: 100%; }
+    100% { background-size: 120%; }
+} */
+
+
+/* --- 2. Navigation Bar (Nav Bar) --- */
+nav {
+    background-color: rgba(30, 30, 30, 0.9); /* สีดำเข้มโปร่งแสง */
+    color: #E0E0E0;
+    padding: 1rem 0;
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #5A5A5A; /* เพิ่มขอบด้านล่างให้ดูแข็งแรง */
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px; /* ปรับขนาดใหญ่ขึ้นเล็กน้อย */
+    font-weight: normal; /* ฟอนต์พิกเซลไม่ต้องการ bold */
+    color: #4CAF50; /* สีเขียว Minecraft */
+    text-shadow: 2px 2px 0px #2F4F4F; /* เงาแบบพิกเซล */
+    letter-spacing: 2px; /* เพิ่มระยะห่างตัวอักษร */
+    transition: all 0.3s ease; /* เพิ่ม transition */
+}
+
+.highlight-digit {
+    color: #FF5722; /* สีส้ม Lava หรือ Redstone */
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px; /* ปรับระยะห่างเล็กน้อย */
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #E0E0E0;
+    text-decoration: none;
+    font-size: 14px; /* ปรับขนาดฟอนต์ให้เข้ากับฟอนต์พิกเซล */
+    padding: 8px 15px; /* ปรับ padding */
+    transition: background-color 0.2s, color 0.2s, border-radius 0.2s; /* ปรับ transition */
+    border: 2px solid transparent; /* ขอบเริ่มต้น */
+    image-rendering: pixelated; /* ทำให้ฟอนต์พิกเซลไม่เบลอ */
+}
+
+.menu a:hover {
+    background-color: #4CAF50; /* สีเขียวเมื่อ Hover */
+    color: #FFFFFF; /* ข้อความสีขาว */
+    border-radius: 4px; /* มุมโค้งมนน้อยลง */
+    border-color: #2E8B57; /* สีขอบเมื่อ Hover */
+}
+
+/* --- 3. Main Content Area (ส่วนเนื้อหาหลัก) --- */
+.main-content {
+    max-width: 750px; /* ปรับความกว้างเล็กน้อย */
+    margin: 80px auto;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.85); /* พื้นหลังเข้มขึ้นและทึบขึ้น */
+    border-radius: 6px; /* มุมโค้งมนน้อยลง */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* เงาเข้มขึ้น */
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border: 3px solid #5A5A5A; /* เพิ่มขอบรอบกล่องเนื้อหา */
+    box-sizing: border-box; /* สำคัญสำหรับการคำนวณ padding/border */
+}
+
+.main-content h1 {
+    font-size: 2.5em; /* ปรับขนาด H1 */
+    margin-bottom: 20px;
+    color: #4CAF50; /* สีเขียว Minecraft */
+    text-shadow: 4px 4px 0px #2F4F4F; /* เงาตัวอักษรหนาขึ้นแบบพิกเซล */
+    line-height: 1.2; /* ปรับระยะห่างบรรทัด */
+}
+
+.main-content p {
+    font-size: 1.0em; /* ปรับขนาด P */
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-family: sans-serif; /* P อาจจะใช้ฟอนต์ปกติเพื่อให้อ่านง่าย */
+    color: #C0C0C0; /* สีเทาอ่อน */
+}
+
+/* --- 4. Background Selection Items (ตัวเลือกเกม) --- */
+.background-options {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* เพิ่มระยะห่างระหว่างตัวเลือก */
+    margin-bottom: 40px; 
+    flex-wrap: wrap;
+}
+
+/* สไตล์สำหรับแต่ละคู่ (ตัวเลือก + ป้ายกำกับ) */
+.button-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* เพิ่มระยะห่างระหว่างตัวเลือกกับป้ายกำกับ */
+}
+
+/* สไตล์สำหรับป้ายกำกับใต้ตัวเลือก */
+.pair-label {
+    font-size: 1.0em; /* ปรับขนาดป้ายกำกับ */
+    color: #A0A0A0; /* สีเทา Minecraft */
+    text-shadow: 1px 1px 0px #404040; /* เงาพิกเซลเล็กน้อย */
+    transition: color 0.3s ease;
+    font-family: 'Press Start 2P', cursive, sans-serif; /* ใช้ฟอนต์พิกเซล */
+    image-rendering: pixelated; /* ทำให้ฟอนต์พิกเซลไม่เบลอ */
+}
+
+/* สไตล์ทั่วไปสำหรับ Element ที่เราจะใช้เป็นตัวเลือก (select-bg-item) */
+.select-bg-item {
+    display: inline-block;
+    padding: 10px;
+    background-color: rgba(50, 50, 50, 0.7); /* สีบล็อกหินโปร่งแสง */
+    border: 3px solid #707070; /* ขอบบล็อกหิน */
+    border-radius: 4px; /* มุมโค้งมนน้อยลง */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; /* ปรับ transition ให้เร็วขึ้นเล็กน้อย */
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5); /* เงาบล็อกแบบพิกเซล */
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+}
+
+.select-bg-item:hover {
+    background-color: rgba(70, 70, 70, 0.8); /* สีเข้มขึ้นเมื่อ Hover */
+    transform: translateY(-4px) translateX(-4px); /* เลื่อนขึ้นและซ้ายเล็กน้อย */
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.7); /* เงาเข้มขึ้นและเลื่อนตาม */
+    border-color: #909090; /* ขอบสว่างขึ้น */
+}
+
+/* สไตล์สำหรับรูปภาพ thumbnail ภายใน .select-bg-item */
+.select-bg-item img {
+    max-width: 150px; /* ปรับขนาดรูป thumbnail ให้ใหญ่ขึ้น */
+    height: auto;
+    display: block;
+    border-radius: 2px; /* มุมโค้งมนน้อยมาก */
+    border: 2px solid #A0A0A0; /* ขอบรูปสไตล์ Minecraft */
+    image-rendering: pixelated; /* สำคัญมากสำหรับภาพพิกเซล */
+    transition: transform 0.2s ease-in-out, border-color 0.2s; 
+}
+
+.select-bg-item:hover img {
+    transform: scale(1.08); /* รูปภาพขยายเล็กน้อยเมื่อชี้ */
+    border-color: #4CAF50; /* ขอบรูปเปลี่ยนเป็นสีเขียว */
+}
+
+/* สไตล์เฉพาะสำหรับตัวเลือกที่เป็นลิงก์ข้อความ (ถ้ามี class="text-link-option") */
+.select-bg-item.text-link-option {
+    padding: 15px 30px;
+    background-color: #606060; 
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid #808080;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    image-rendering: pixelated;
+}
+
+.select-bg-item.text-link-option:hover {
+    background-color: #707070; 
+    border-color: #A0A0A0;
+}
+
+/* สไตล์สำหรับตัวเลือกที่ถูกเลือก (Active State) - อาจไม่จำเป็นถ้าไม่มี Hover Effect แต่คงไว้เผื่อใช้ */
+.select-bg-item.active {
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-color: #4CAF50; /* ใช้ขอบสีเขียวสดใส Minecraft */
+    transform: translateY(-2px) translateX(-2px); 
+    box-shadow: 6px 6px 0px #2E8B57, /* เงาเรืองแสงสีเขียว */
+                0 4px 12px rgba(0, 0, 0, 0.4); 
+    color: #4CAF50; 
+}
+
+/* เมื่อตัวเลือก active ป้ายกำกับคู่ของมันก็จะเปลี่ยนสีด้วย */
+.select-bg-item.active + .pair-label {
+    color: #4CAF50; 
+    font-weight: bold;
+}
+
+/* --- 5. Utility Classes (คลาสเสริม) --- */
+.spacer1 {
+    height: 1000px; /* ใช้สำหรับสร้างระยะห่าง */
+}
+
+.logo:hover {
+    color: #ffd700; /* เปลี่ยนเป็นสีทอง */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5); /* เพิ่มเงาเรืองแสง */
+    transform: scale(1.05); /* ขยายเล็กน้อย */
+}
+/* --- Image Slider Styles --- */
+.image-slider-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0; /* ลด padding เพื่อให้สไลเดอร์ไม่กินพื้นที่แนวตั้งมากเกินไป */
+    margin-top: 30px; /* ลดระยะห่าง */
+    margin-bottom: 30px; /* ลดระยะห่าง */
+    background-color: transparent; /* ทำให้พื้นหลังเป็นแบบโปร่งใส */
+    box-shadow: none; /* ลบเงาออกไป */
+}
+
+.slider-container {
+    position: relative;
+    width: 90%; /* กำหนดความกว้างเป็นเปอร์เซ็นต์ของพาเรนต์ */
+    max-width: 960px; /* ปรับความกว้างสูงสุดตรงนี้ เพื่อให้พอดี ไม่ใหญ่เกินไป */
+    /* ถ้าต้องการให้สไลเดอร์ขยายเต็มหน้าจอมากขึ้นบน Desktop ลองเพิ่มค่า max-width เช่น 1200px */
+    
+    /* ***** เพิ่ม/แก้ไขตรงนี้เพื่อจัดการแถบสีเทาและขยายรูปภาพ ***** */
+    height: 480px; /* กำหนดความสูงคงที่ของคอนเทนเนอร์สไลเดอร์ เช่น 480px หรือ 560px */
+                         /* ค่านี้ควรใกล้เคียงกับอัตราส่วนของรูปภาพคุณ */
+    overflow: hidden; /* สำคัญมาก: ซ่อนส่วนที่เกินขอบคอนเทนเนอร์ */
+    
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 0 5px rgba(255, 255, 255, 0.05);
+    background-color: #2a2a2a; /* พื้นหลังสีเทาเข้มของการ์ด อาจเป็นสีดำสนิทก็ได้ถ้าต้องการให้กลืนไปเลย */
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+    height: 100%; /* ทำให้ track สูงเต็ม container */
+    width: 100%; /* ทำให้ track กว้างเต็ม container */
+}
+
+.slider-item {
+    min-width: 100%; /* สำคัญ: ทำให้แต่ละสไลด์มีความกว้าง 100% ของ track (ซึ่งก็คือ 100% ของ container) */
+    flex-shrink: 0; /* ป้องกันไม่ให้ item ย่อตัว */
+    height: 100%; /* สำคัญ: ทำให้แต่ละ item สูงเต็ม container */
+    display: flex; /* ใช้ flex เพื่อจัดรูปภาพภายใน */
+    justify-content: center; /* จัดกลางแนวนอน */
+    align-items: center; /* จัดกลางแนวตั้ง */
+}
+
+.slider-track img {
+    width: 100%; /* ทำให้รูปภาพกว้างเต็ม slider-item */
+    height: 100%; /* ทำให้รูปภาพสูงเต็ม slider-item */
+    object-fit: cover; /* *** สำคัญ: ทำให้รูปภาพครอบคลุมพื้นที่โดยไม่บิดเบี้ยว *** */
+                       /* จะมีการตัดขอบรูปภาพบางส่วนออกถ้าอัตราส่วนไม่ตรง */
+                       /* หากต้องการให้รูปภาพทั้งรูปปรากฏโดยไม่มีส่วนใดถูกตัด ใช้ object-fit: contain; แทน แต่จะมีแถบดำ/เทา ถ้าอัตราส่วนไม่ตรง */
+    display: block;
+    border-radius: 15px; /* มุมโค้งมนของรูปภาพ */
+    filter: brightness(0.7);
+    transition: filter 0.5s ease-in-out;
+}
+
+/* Hover effect สำหรับรูปภาพในสไลด์ */
+.slider-item:hover img {
+    filter: brightness(0.9); /* สว่างขึ้นเมื่อ Hover */
+}
+
+/* Slider Buttons */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2); /* สีปุ่มอ่อนลง */
+    color: white;
+    border: none;
+    padding: 0; /* ลบ padding */
+    cursor: pointer;
+    font-size: 1.5em; /* ลดขนาดไอคอน */
+    border-radius: 50%; /* ทำให้เป็นวงกลม */
+    width: 45px; /* ลดขนาดปุ่มลงเล็กน้อย */
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    opacity: 0.7; /* เริ่มต้นด้วยความโปร่งใส */
+    transition: all 0.3s ease;
+}
+
+.slider-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.slider-button.prev {
+    left: 15px; /* ปรับตำแหน่งเล็กน้อย */
+}
+
+.slider-button.next {
+    right: 15px; /* ปรับตำแหน่งเล็กน้อย */
+}
+
+/* Slider Dots */
+.slider-dots {
+    position: absolute;
+    bottom: 15px; /* ปรับตำแหน่งของจุดให้สูงขึ้นเล็กน้อย */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px; /* ลดระยะห่างระหว่างจุด */
+    z-index: 5;
+}
+
+.dot {
+    width: 10px; /* ลดขนาดจุดลงเล็กน้อย */
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* จุดเริ่มต้น */
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background-color: #34fa6f; /* จุดที่ active */
+    border-color: #34fa6f;
+}
+
+.dot:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive adjustments for slider */
+@media (max-width: 1024px) {
+    .slider-container {
+        max-width: 800px; /* ลดขนาดลงอีกสำหรับจอขนาดกลาง */
+        height: 400px; /* ปรับความสูงตาม */
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        max-width: 90%; /* ให้ใช้ความกว้าง 90% ของหน้าจอ */
+        border-radius: 10px;
+        height: 350px; /* ปรับความสูงตาม */
+    }
+    .slider-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+        left: 10px;
+        right: 10px;
+    }
+    .slider-dots {
+        bottom: 10px;
+    }
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    .image-slider-section {
+        padding: 30px 15px; /* ลด padding */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-container {
+        height: 250px; /* สำหรับมือถือ ให้รูปภาพไม่สูงเกินไป */
+    }
+    .slider-button {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+        left: 5px;
+        right: 5px;
+    }
+    .slider-dots {
+        bottom: 5px;
+        gap: 5px;
+    }
+    .dot {
+        width: 6px;
+        height: 6px;
+    }
+    .image-slider-section {
+        padding: 20px 10px;
+    }
+}
+
+/* --- Game Cards & Action Buttons Styles (เพิ่มส่วนใหม่ตรงนี้) --- */
+
+/* ส่วน Game Section โดยรวม (เพิ่มกลับมา) */
+.game-section {
+    padding: 60px 0; /* ระยะห่างด้านบนและล่างของแต่ละ section */
+    background-color: transparent; /* ทำให้โปร่งใสเพื่อให้เห็นพื้นหลัง body */
+}
+
+/* หัวข้อของแต่ละ Section (Latest Worlds, Popular Resource Packs) (เพิ่มกลับมา) */
+.section-title {
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    font-size: 2.2em; /* ขนาดตัวอักษรใหญ่ขึ้น */
+    color: #4CAF50; /* สีเขียว Minecraft */
+    text-shadow: 3px 3px 0px #2F4F4F; /* เงาแบบพิกเซล */
+    text-align: center;
+    margin-bottom: 40px; /* ระยะห่างด้านล่าง */
+    letter-spacing: 1px; /* เพิ่มระยะห่างตัวอักษรเล็กน้อย */
+}
+
+.game-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* สร้าง Grid layout */
+    gap: 30px; /* ระยะห่างระหว่างการ์ด */
+    max-width: 1140px; /* กว้างเท่ากับ container ของ Nav */
+    margin: 0 auto; /* จัดกลาง */
+    padding: 0 20px; /* Padding ด้านข้าง */
+    justify-content: center; /* จัดกลางการ์ดเมื่อมีไม่เต็มแถว */
+}
+
+.game-card {
+    background-color: #2a2a2a; /* พื้นหลังของการ์ด */
+    border: 3px solid #444; /* ขอบของการ์ด (หนาขึ้นเล็กน้อย) */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.6); /* เงาแบบพิกเซล */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) translateX(-8px); /* เลื่อนขึ้นและซ้ายมากขึ้นเมื่อ Hover */
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.7), 0 0 20px rgba(76, 175, 80, 0.4); /* เงาเข้มขึ้นและมีเรืองแสง */
+    border-color: #4CAF50; /* ขอบเปลี่ยนเป็นสีเขียว */
+}
+
+.card-thumbnail {
+    width: 100%;
+    height: 140px; /* กำหนดความสูงรูปภาพปกให้ใหญ่ขึ้นเล็กน้อย */
+    object-fit: cover;
+    display: block;
+    border-bottom: 2px solid #444; /* ขอบล่างรูปภาพปก */
+    image-rendering: pixelated; /* สำคัญสำหรับรูปภาพสไตล์พิกเซล */
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .card-thumbnail {
+    transform: scale(1.05); /* รูปภาพปกขยายเล็กน้อยเมื่อ Hover */
+}
+
+.card-info {
+    padding: 15px;
+    flex-grow: 1; /* ทำให้ info block ขยายเต็มพื้นที่ที่เหลือ */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-family: 'Press Start 2P', cursive, sans-serif; /* ใช้ฟอนต์พิกเซลสำหรับชื่อการ์ด */
+    font-size: 1.0em; /* ปรับขนาดเล็กน้อย */
+    color: #f0f0f0;
+    margin-bottom: 5px;
+    line-height: 1.3;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+    /* หากชื่อยาวเกิน ให้ตัดออกและแสดง ... */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-author {
+    font-family: sans-serif; /* อาจใช้ฟอนต์ปกติเพื่อให้อ่านง่าย */
+    font-size: 0.8em;
+    color: #a0a0a0;
+    margin-bottom: 10px;
+}
+
+.card-stats {
+    font-family: sans-serif; /* อาจใช้ฟอนต์ปกติ */
+    font-size: 0.75em;
+    color: #b0b0b0;
+    margin-top: auto; /* ดัน stats ไปด้านล่าง */
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* เพิ่ม icon-stat ตรงนี้ เพื่อสไตล์ให้ไอคอนใน stat */
+.stat-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: brightness(0.8); /* ทำให้ไอคอนสลัวเล็กน้อย */
+}
+
+/* Styles for Action Buttons inside Cards */
+.card-actions {
+    display: flex;
+    gap: 10px; /* ระยะห่างระหว่างปุ่ม "View" และ "Install" */
+    margin-top: 10px;
+    justify-content: flex-end; /* จัดปุ่มไปทางขวา */
+}
+
+.action-btn {
+    display: flex;
+    align-items: center; /* จัดเรียงไอคอนและข้อความให้อยู่กึ่งกลางในแนวนอน */
+    gap: 5px; /* ระยะห่างระหว่างไอคอนและข้อความ */
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive, sans-serif; /* ใช้ฟอนต์พิกเซล */
+    font-size: 0.8em; /* ขนาดข้อความปุ่ม */
+    transition: all 0.2s ease-out; /* Smooth transition */
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5); /* เงาข้อความ */
+    border: 2px solid transparent; /* ขอบเริ่มต้น (หนาขึ้นเล็กน้อย) */
+    image-rendering: pixelated; /* เพื่อให้ฟอนต์พิกเซลไม่เบลอ */
+}
+
+/* สไตล์เฉพาะปุ่ม View */
+.view-btn {
+    background-color: #3f43b5; /* สีน้ำเงิน (คล้ายในภาพ CurseForge) */
+    color: #ffffff;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4); /* เงาแบบพิกเซล */
+}
+
+.view-btn:hover {
+    background-color: #3e3aa7; /* สีน้ำเงินเข้มขึ้นเมื่อ Hover */
+    transform: scale(1.08) translateY(-3px); /* ขยายใหญ่ขึ้นและเลื่อนขึ้นเล็กน้อย */
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5), 0 0 15px rgba(63, 81, 181, 0.5);
+    border-color: #536dfe;
+}
+
+/* สไตล์เฉพาะปุ่ม Install */
+.install-btn {
+    background-color: #4CAF50; /* สีเขียว Minecraft */
+    color: #212121; /* ข้อความสีดำเข้ม */
+    font-weight: bold; /* ข้อความหนาขึ้นเล็กน้อย */
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4); /* เงาแบบพิกเซล */
+}
+
+.install-btn:hover {
+    background-color: #388e3c; /* สีเขียวเข้มขึ้นเมื่อ Hover */
+    transform: scale(1.08) translateY(-3px); /* ขยายใหญ่ขึ้นและเลื่อนขึ้นเล็กน้อย */
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5), 0 0 15px rgba(76, 175, 80, 0.5);
+    border-color: #81c784;
+}
+
+/* สไตล์สำหรับไอคอนภายในปุ่ม */
+.action-btn .btn-icon {
+    width: 18px; /* ขนาดไอคอน */
+    height: 18px;
+    object-fit: contain;
+    image-rendering: pixelated; /* สำคัญสำหรับภาพพิกเซล */
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.7)); /* เพิ่มเงาให้ไอคอน */
+    transition: transform 0.2s ease-out; /* transition สำหรับไอคอน */
+}
+
+.action-btn:hover .btn-icon {
+    transform: scale(1.15); /* ไอคอนขยายใหญ่ขึ้นอีกนิดเมื่อปุ่ม Hover */
+}
+
+
+/* Responsive adjustments for game cards and buttons */
+@media (max-width: 1024px) {
+    .section-title { /* เพิ่มกลับมา */
+        font-size: 2em;
+    }
+    .game-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* ปรับขนาดการ์ดเล็กลง */
+        gap: 25px;
+    }
+    .game-card {
+        width: auto; /* ให้มันปรับตาม grid */
+    }
+    .card-thumbnail {
+        height: 120px;
+    }
+    .card-title {
+        font-size: 0.95em;
+    }
+    .action-btn {
+        padding: 7px 10px;
+        font-size: 0.75em;
+    }
+    .action-btn .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title { /* เพิ่มกลับมา */
+        font-size: 1.8em;
+    }
+    .game-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* ลดขนาดการ์ดอีก */
+        gap: 20px;
+        margin: 40px auto;
+    }
+    .card-thumbnail {
+        height: 100px;
+    }
+    .card-title {
+        font-size: 0.9em;
+    }
+    .card-author {
+        font-size: 0.75em;
+    }
+    .card-stats {
+        font-size: 0.7em;
+    }
+    .action-btn {
+        padding: 6px 8px;
+        font-size: 0.7em;
+        gap: 4px;
+    }
+    .action-btn .btn-icon {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title { /* เพิ่มกลับมา */
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+    .game-cards-container {
+        grid-template-columns: 1fr; /* เรียงการ์ดเป็นคอลัมน์เดียว */
+        padding: 0 15px;
+        gap: 25px;
+    }
+    .game-card {
+        max-width: 300px; /* จำกัดความกว้างสูงสุดของการ์ดเดียว */
+        margin: 0 auto; /* จัดกลางการ์ด */
+    }
+    .card-thumbnail {
+        height: 150px; /* อาจจะเพิ่มความสูงกลับมาเล็กน้อยให้เห็นชัดเจนบนมือถือ */
+    }
+    .card-actions {
+        flex-direction: column; /* ให้ปุ่มเรียงแนวตั้งบนมือถือจอเล็ก */
+        align-items: stretch; /* ให้ปุ่มขยายเต็มความกว้างของการ์ด */
+        gap: 8px;
+    }
+    .action-btn {
+        width: 100%; /* ปุ่มขยายเต็มความกว้างของการ์ด */
+        justify-content: center; /* จัดกลางไอคอนและข้อความ */
+        padding: 10px 15px;
+        font-size: 0.8em;
+    }
+    .action-btn .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* ปุ่ม View All ด้านล่าง Grid */
+.view-all-wrapper {
+    grid-column: 1 / -1; /* ทำให้ wrapper ครอบคลุมทุกคอลัมน์ใน grid */
+    text-align: right; /* จัดปุ่มไปทางขวา */
+    margin-top: 30px; /* ระยะห่างจากด้านบน */
+}
+
+.view-all-btn {
+    display: inline-block;
+    background-color: #FFFFFF; /* เปลี่ยนเป็นสีขาว */
+    color: #212121; /* ข้อความสีดำเข้ม */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease, border-color 0.2s ease; /* เพิ่ม transition สำหรับ color และ border-color */
+    border: 2px solid #C0C0C0; /* ขอบสีเทาอ่อน */
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+.view-all-btn:hover {
+    background-color: #4CAF50; /* เปลี่ยนเป็นสีเขียว Minecraft เมื่อ Hover */
+    color: #FFFFFF; /* เปลี่ยนสีข้อความเป็นสีขาว */
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.6);
+    border-color: #388e3c; /* ขอบเปลี่ยนเป็นสีเขียวเข้มขึ้น */
+}
