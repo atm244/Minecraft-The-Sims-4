@@ -1,0 +1,939 @@
+/* new-page-styles.css - ไฟล์สไตล์สำหรับหน้า Landing Page ใหม่ */
+
+/* --- นำเข้าฟอนต์จาก Google Fonts --- */
+@import url('https://fonts.fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Sarabun:wght@300;400;600&display=swap');
+
+/* --- 1. Global Styles (การตั้งค่าทั่วไป) --- */
+/* รีเซ็ตค่าเริ่มต้นของเบราว์เซอร์ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* สไตล์สำหรับ HTML เพื่อเปิดใช้งาน Parallax */
+html {
+    height: 100%; /* สำคัญมากสำหรับ Parallax */
+    overflow-y: scroll; /* ให้ HTML มี Scrollbar แทน Body */
+    scroll-behavior: smooth; /* เพื่อการเลื่อนที่นุ่มนวล */
+}
+
+/* สไตล์สำหรับ Body ของหน้าเว็บ */
+body {
+    min-height: 100vh; /* ความสูงขั้นต่ำเต็มหน้าจอ (Viewport Height) */
+    color: #e0e0e0; /* สีข้อความเริ่มต้น: ขาวนวลขึ้นเล็กน้อย */
+    font-family: 'Sarabun', sans-serif; /* ฟอนต์หลักสำหรับเนื้อหาทั่วไป */
+    position: relative; /* สำหรับการจัดตำแหน่งขององค์ประกอบลูกที่ใช้ position: absolute */
+
+    /* Transition สำหรับการเปลี่ยนพื้นหลัง (รูปภาพและสี) ให้ดูนุ่มนวล */
+    transition: background-image 0.8s ease-in-out, background-color 0.8s ease-in-out, opacity 0.8s ease-in-out;
+
+    /* พื้นหลังเริ่มต้นของเว็บไซต์ (สีดำ) */
+    background-color: #1a1a1a; /* เปลี่ยนเป็นสีดำที่เข้มขึ้นเล็กน้อย */
+    /* *** ตำแหน่งที่แก้ไข: เปลี่ยน URL ของรูปภาพพื้นหลังตรงนี้ *** */
+    background-image: url('https://w.wallhaven.cc/full/5g/wallhaven-5g22q5.png');
+    /* *** สิ้นสุดการแก้ไข *** */
+    background-size: cover; /* ปรับขนาดภาพให้คลุมพื้นที่ทั้งหมดของ Body */
+    background-position: center; /* จัดตำแหน่งภาพให้อยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ไม่ให้ภาพพื้นหลังซ้ำ */
+
+    /* *** เพิ่มคุณสมบัตินี้สำหรับ Parallax Effect *** */
+    background-attachment: fixed; /* ทำให้พื้นหลังติดอยู่กับ viewport ไม่เลื่อนไปพร้อมเนื้อหา */
+
+    opacity: 1; /* กำหนดให้ body เริ่มต้นทึบแสง */
+}
+
+
+/* --- 2. Navigation Bar (Nav Bar) --- */
+nav {
+    background-color: rgba(30, 30, 30, 0.9); /* Navbar สีดำเข้มขึ้นและโปร่งแสงเล็กน้อย */
+    color: #E0E0E0;
+    padding: 1rem 0; /* padding ด้านบนและล่าง 1rem, ซ้ายและขวา 0 */
+    position: sticky; /* ทำให้ Nav Bar ติดอยู่ด้านบนเมื่อเลื่อน */
+    top: 0;
+    z-index: 1000; /* ให้ Nav Bar อยู่ด้านบนสุด */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้ดูมีมิติและเด่นขึ้น */
+    border-bottom: 2px solid #5A5A5A; /* เพิ่มขอบด้านล่างให้ดูแข็งแรง */
+}
+
+.container {
+    max-width: 1140px; /* ความกว้างสูงสุดของเนื้อหาใน Nav */
+    margin: 0 auto; /* จัดกึ่งกลางคอนเทนเนอร์ */
+    display: flex; /* ใช้ Flexbox สำหรับการจัดเรียง */
+    justify-content: space-between; /* จัดเรียงโลโก้และเมนูคนละฝั่ง */
+    align-items: center; /* จัดเรียงแนวตั้งให้อยู่ตรงกลาง */
+    padding: 0 20px; /* เพิ่ม padding ซ้ายขวาให้คอนเทนเนอร์ */
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif; /* ใช้ฟอนต์ Orbitron สำหรับโลโก้ */
+    font-size: 28px; /* ปรับขนาดโลโก้ให้ใหญ่ขึ้นเล็กน้อย */
+    font-weight: 700; /* ทำให้หนาขึ้น */
+    color: #34fa6f; /* สีเขียวสดใส */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* เพิ่มเงาข้อความให้เด่นขึ้น */
+    transition: all 0.3s ease; /* เพิ่ม transition */
+}
+
+.logo:hover {
+    color: #ffd700; /* เปลี่ยนเป็นสีทอง */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5); /* เพิ่มเงาเรืองแสง */
+    transform: scale(1.05); /* ขยายเล็กน้อย */
+}
+
+.highlight-digit {
+    color: #FFD700; /* เปลี่ยนสีตัวเลขเป็นสีทอง */
+}
+
+.menu {
+    list-style: none; /* ลบจุด Bullet ของรายการ */
+    display: flex; /* ใช้ Flexbox สำหรับรายการเมนู */
+    gap: 30px; /* ระยะห่างระหว่างรายการเมนู */
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ Sarabun สำหรับเมนู */
+    color: #e0e0e0; /* สีข้อความลิงก์ */
+    text-decoration: none; /* ลบขีดเส้นใต้ลิงก์ */
+    font-size: 17px; /* ปรับขนาดลิงก์เมนูให้ใหญ่ขึ้นเล็กน้อย */
+    padding: 8px 15px; /* เพิ่ม padding ให้กดง่ายขึ้น */
+    transition: all 0.3s ease; /* Transition สำหรับเอฟเฟกต์ Hover */
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px; /* มุมโค้งมน */
+}
+
+.menu a:hover {
+    background-color: #34fa6f; /* เปลี่ยนสีพื้นหลังเมื่อ Hover เป็นสีเขียว */
+    color: black; /* เปลี่ยนสีข้อความเมื่อ Hover เป็นสีดำ */
+    transform: translateY(-2px); /* ยกขึ้นเล็กน้อยเมื่อ Hover */
+    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.4); /* เพิ่มเงาสีเขียวเมื่อ Hover */
+}
+
+/* --- 3. Main Content Area (ส่วนเนื้อหาหลัก) --- */
+.main-content {
+    max-width: 800px; /* ขยายความกว้างสูงสุดของเนื้อหา */
+    margin: 80px auto; /* กำหนดระยะห่างด้านบน/ล่าง 80px, ซ้าย/ขวา auto เพื่อจัดกึ่งกลาง */
+    padding: 50px; /* เพิ่ม padding ให้เนื้อหา */
+    background-color: rgba(0, 0, 0, 0.75); /* พื้นหลังโปร่งแสงสีดำเข้มขึ้น เพื่อให้อ่านง่าย */
+    border-radius: 15px; /* มุมโค้งมนที่ใหญ่ขึ้น */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6); /* เงาของกล่องที่เข้มขึ้นและมีมิติ */
+    text-align: center; /* จัดข้อความกึ่งกลาง */
+    position: relative;
+    z-index: 2; /* ทำให้เนื้อหาอยู่ด้านบนกว่าพื้นหลัง */
+    backdrop-filter: blur(8px); /* เพิ่มเอฟเฟกต์เบลอพื้นหลังที่ชัดเจนขึ้น */
+    -webkit-backdrop-filter: blur(8px); /* สำหรับ Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* เพิ่มขอบบางๆ ให้ดูคมชัด */
+}
+
+.main-content h1 {
+    font-family: 'Orbitron', sans-serif; /* ใช้ฟอนต์ Orbitron สำหรับหัวข้อหลัก */
+    font-size: 3.2em; /* ขยายขนาดหัวข้อ h1 */
+    margin-bottom: 25px;
+    color: #34fa6f; /* สีเขียวสดใส */
+    text-shadow: 0 0 15px rgba(52, 250, 111, 0.7), 0 0 25px rgba(52, 250, 111, 0.4); /* เงาเรืองแสงที่เข้มขึ้น */
+    line-height: 1.2;
+}
+
+.main-content p {
+    font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ Sarabun */
+    font-size: 1.25em; /* ขยายขนาดข้อความปกติขึ้นอีกเล็กน้อย */
+    line-height: 1.8; /* เพิ่มระยะห่างบรรทัดเพื่อให้อ่านสบายตาขึ้น */
+    margin-bottom: 40px; /* เพิ่มระยะห่างจากส่วนถัดไป */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* เพิ่มเงาเล็กน้อยให้อ่านง่ายบนพื้นหลังโปร่งแสง */
+}
+
+/* --- 4. Background Selection Items (ตัวเลือกพื้นหลัง: รูปภาพหรือลิงก์ข้อความ) --- */
+.background-options {
+    display: flex; /* จัดเรียงแบบ Flexbox */
+    justify-content: center; /* จัดกึ่งกลางตามแนวนอน */
+    gap: 35px; /* ระยะห่างระหว่างตัวเลือกที่เพิ่มขึ้น */
+    margin-bottom: 50px; /* เพิ่มระยะห่างด้านล่าง */
+    flex-wrap: wrap; /* ให้ขึ้นบรรทัดใหม่เมื่อเนื้อที่ไม่พอ */
+}
+
+/* สไตล์สำหรับแต่ละคู่ (ตัวเลือก + ป้ายกำกับ) */
+.button-pair {
+    display: flex;
+    flex-direction: column; /* จัดเรียงแนวตั้ง */
+    align-items: center; /* จัดกึ่งกลางตามแนวนอน */
+    gap: 12px; /* ระยะห่างระหว่างตัวเลือกกับป้ายกำกับที่เพิ่มขึ้น */
+}
+
+/* สไตล์สำหรับป้ายกำกับใต้ตัวเลือก */
+.pair-label {
+    font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ Sarabun */
+    font-size: 1em; /* ปรับขนาดป้ายกำกับ */
+    color: #c0c0c0; /* สีเทาอ่อน */
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    transition: color 0.3s ease;
+}
+
+/* สไตล์ทั่วไปสำหรับ Element ที่เราจะใช้เป็นตัวเลือก (select-bg-item) */
+.select-bg-item {
+    display: inline-block;
+    padding: 12px; /* เพิ่ม padding รอบๆ รูปภาพหรือข้อความ */
+    background-color: rgba(255, 255, 255, 0.15); /* พื้นหลังโปร่งแสงมากขึ้นเล็กน้อย */
+    border: 2px solid transparent; /* ขอบเริ่มต้นโปร่งใส */
+    border-radius: 10px; /* มุมโค้งมนที่ใหญ่ขึ้น */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* เงาที่เข้มขึ้น */
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 500; /* เพิ่มน้ำหนักฟอนต์เล็กน้อย */
+}
+
+.select-bg-item:hover {
+    background-color: rgba(255, 255, 255, 0.25); /* สีพื้นหลังเข้มขึ้นเมื่อ Hover */
+    transform: translateY(-3px); /* เลื่อนขึ้นมากขึ้น */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* เงาเข้มขึ้น */
+}
+
+/* สไตล์สำหรับรูปภาพ thumbnail ภายใน .select-bg-item (หากใช้ <img src="...">) */
+.select-bg-item img {
+    max-width: 130px; /* ขยายขนาดรูป thumbnail เล็กน้อย */
+    height: auto;
+    display: block;
+    border-radius: 8px; /* มุมโค้งมนของรูปที่ใหญ่ขึ้น */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* ขอบรูปที่ชัดเจนขึ้น */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* เพิ่ม transition สำหรับขอบ */
+}
+
+.select-bg-item:hover img {
+    transform: scale(1.08); /* รูปภาพขยายมากขึ้นเมื่อชี้ */
+    border-color: #34fa6f; /* เปลี่ยนสีขอบรูปเมื่อ hover */
+}
+
+/* สไตล์เฉพาะสำหรับตัวเลือกที่เป็นลิงก์ข้อความ (ถ้ามี class="text-link-option") */
+.select-bg-item.text-link-option {
+    padding: 18px 35px; /* กำหนด padding ให้ดูเป็นปุ่มที่ใหญ่ขึ้น */
+    background-color: #444; /* สีพื้นหลังของลิงก์ข้อความที่เข้มขึ้น */
+    color: white;
+    font-weight: 600; /* เพิ่มน้ำหนักฟอนต์ */
+    text-align: center;
+    border: 2px solid transparent; /* ขอบเริ่มต้น */
+}
+
+.select-bg-item.text-link-option:hover {
+    background-color: #666; /* สีพื้นหลังเข้มขึ้นเมื่อ Hover */
+    border-color: #34fa6f; /* เพิ่มขอบสีเขียวเมื่อ hover */
+}
+
+/* สไตล์สำหรับตัวเลือกที่ถูกเลือก (Active State) */
+.select-bg-item.active {
+    background-color: rgba(0, 0, 0, 0.5); /* พื้นหลังเข้มขึ้นเมื่อ Active */
+    border-color: #34fa6f; /* ใช้ขอบสีเขียวสดใส */
+    transform: translateY(-2px); /* เลื่อนขึ้นเล็กน้อย */
+    box-shadow: 0 0 0 4px #34fa6f, /* เพิ่มเงาเรืองแสงสีเขียวที่เข้มขึ้น */
+                0 6px 18px rgba(0, 0, 0, 0.5);
+    color: #34fa6f; /* เปลี่ยนสีข้อความให้เป็นสีเดียวกับขอบ */
+}
+
+/* เมื่อตัวเลือก active ป้ายกำกับคู่ของมันก็จะเปลี่ยนสีด้วย */
+.select-bg-item.active + .pair-label {
+    color: #34fa6f;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(52, 250, 111, 0.8); /* เพิ่มเงาเรืองแสงให้ป้ายกำกับ active */
+}
+
+/* --- 5. Utility Classes (คลาสเสริม) --- */
+.spacer1 {
+    height: 1000px; /* ใช้สำหรับสร้างระยะห่าง (ปรับลด/เพิ่มตามความจำเป็น) */
+}
+
+/* --- Image Slider Styles --- */
+.image-slider-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* กำหนดความกว้างสูงสุดของสไลเดอร์ */
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.7); /* เพิ่มพื้นหลังสีดำทึบเล็กน้อยให้กับ container แทนที่จะเป็นโปร่งใส เพื่อให้รูปภาพที่ใช้ contain แล้วมีขอบดูดีขึ้น */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้สไลเดอร์มีมิติ */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* เพิ่มขอบบางๆ */
+    /* สามารถเพิ่ม min-height ได้หากต้องการให้กรอบสไลด์มีความสูงขั้นต่ำที่แน่นอน */
+    min-height: 450px; /* ตัวอย่าง: กำหนดความสูงขั้นต่ำเพื่อให้กรอบไม่หดเมื่อรูปภาพเล็ก */
+    display: flex; /* เพิ่ม display flex เพื่อให้ slider-track อยู่ตรงกลางแนวตั้งหากมีพื้นที่ว่าง */
+    align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+    width: 100%; /* สำคัญ: ให้ track เต็มความกว้างของ container */
+    height: 100%; /* สำคัญ: ให้ track เต็มความสูงของ container */
+}
+
+.slider-item { /* ลบ img. ออก เพราะใน HTML ของคุณคือ <div class="slider-item">...<img src="..."></div> */
+    width: 100%;
+    flex-shrink: 0;
+    display: flex; /* เพิ่ม flex เพื่อจัดรูปภาพภายใน slider-item */
+    justify-content: center; /* จัดรูปภาพกลางแนวนอน */
+    align-items: center; /* จัดรูปภาพกลางแนวตั้ง */
+    height: 100%; /* ทำให้ slider-item เต็มความสูงของ slider-track */
+    background-color: #1a1a1a; /* สีพื้นหลังสำหรับพื้นที่ว่างที่อาจเกิดขึ้นเมื่อใช้ object-fit: contain */
+    border-radius: 15px; /* มุมโค้งมนของกรอบ slider-item */
+    overflow: hidden; /* ซ่อนส่วนที่เกินจาก border-radius ของ item */
+}
+
+.slider-item img { /* เพิ่ม selector img เข้าไปเพื่อควบคุมรูปภาพภายใน slider-item */
+    width: 100%; /* ให้รูปภาพเต็มความกว้างของ slider-item */
+    height: 100%; /* ให้รูปภาพเต็มความสูงของ slider-item */
+    object-fit: contain; /* *** การแก้ไขหลัก: ทำให้รูปภาพทั้งหมดอยู่ในกรอบโดยไม่ถูกตัด *** */
+    display: block;
+    /* border-radius: 15px;  ลบออก หรือตั้งค่าตามต้องการ ถ้ามีใน slider-item อยู่แล้วอาจไม่จำเป็น */
+    /* border: none; */ /* ลบออก หรือตั้งค่าตามต้องการ */
+}
+
+
+/* Slider Buttons */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 2em;
+    border-radius: 8px;
+    z-index: 5;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.slider-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-button.prev {
+    left: 15px;
+}
+
+.slider-button.next {
+    right: 15px;
+}
+
+/* Slider Dots */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background-color: #34fa6f;
+    transform: scale(1.2);
+}
+
+.dot:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+/* --- Responsive Design (ปรับแต่งเฉพาะส่วนสไลเดอร์) --- */
+@media (max-width: 1024px) {
+    .slider-container {
+        max-width: 90%;
+        min-height: 350px; /* ลดความสูงขั้นต่ำลง */
+    }
+    .slider-button {
+        padding: 10px 15px;
+        font-size: 1.5em;
+    }
+    .slider-dots {
+        bottom: 10px;
+        gap: 8px;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    .image-slider-section {
+        padding: 40px 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        max-width: 95%; /* ขยายความกว้างบนมือถือเล็กน้อย */
+        min-height: 300px; /* ลดความสูงขั้นต่ำลงอีก */
+        border-radius: 10px; /* ปรับมุมโค้งมน */
+    }
+    .slider-button {
+        padding: 8px 12px;
+        font-size: 1.2em;
+    }
+    .slider-dots {
+        bottom: 8px;
+        gap: 6px;
+    }
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    .image-slider-section {
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-container {
+        min-height: 250px; /* ลดความสูงขั้นต่ำสุดๆ */
+        max-width: 100%; /* ให้เต็มความกว้างเท่าที่เป็นไปได้ */
+        border-radius: 8px;
+    }
+    .slider-button {
+        padding: 6px 10px;
+        font-size: 1em;
+        left: 10px; /* ปรับตำแหน่งปุ่ม */
+        right: 10px;
+    }
+    .slider-dots {
+        bottom: 5px;
+        gap: 5px;
+    }
+    .dot {
+        width: 7px;
+        height: 7px;
+    }
+}
+
+/* --- Game Cards & Action Buttons Styles --- */
+
+.game-section {
+    padding: 60px 0; /* ระยะห่างด้านบนและล่างของแต่ละ section */
+    background-color: transparent; /* ทำให้โปร่งใสเพื่อให้เห็นพื้นหลัง body */
+}
+
+.section-title {
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    font-size: 2.2em; /* ขนาดตัวอักษรใหญ่ขึ้น */
+    color: #4CAF50; /* สีเขียว Minecraft */
+    text-shadow: 3px 3px 0px #2F4F4F; /* เงาแบบพิกเซล */
+    text-align: center;
+    margin-bottom: 40px; /* ระยะห่างด้านล่าง */
+    letter-spacing: 1px; /* เพิ่มระยะห่างตัวอักษรเล็กน้อย */
+}
+
+.game-cards-container {
+    display: grid;
+    /* สร้าง Grid layout: คอลัมน์จะปรับขนาดอัตโนมัติ โดยแต่ละคอลัมน์กว้างอย่างน้อย 220px */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px; /* ระยะห่างระหว่างการ์ด */
+    max-width: 1140px; /* กว้างเท่ากับ container ของ Nav */
+    margin: 0 auto; /* จัดกลาง */
+    padding: 0 20px; /* Padding ด้านข้าง */
+    justify-content: center; /* จัดกลางการ์ดเมื่อมีไม่เต็มแถว */
+}
+
+.game-card {
+    background-color: #2a2a2a; /* พื้นหลังของการ์ด */
+    border: 3px solid #444; /* ขอบของการ์ด (หนาขึ้นเล็กน้อย) */
+    border-radius: 8px;
+    overflow: hidden; /* ซ่อนส่วนที่เกินจาก border-radius */
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.6); /* เงาแบบพิกเซล */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) translateX(-8px); /* เลื่อนขึ้นและซ้ายมากขึ้นเมื่อ Hover */
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.7), 0 0 20px rgba(76, 175, 80, 0.4); /* เงาเข้มขึ้นและมีเรืองแสง */
+    border-color: #4CAF50; /* ขอบเปลี่ยนเป็นสีเขียว */
+}
+
+.card-thumbnail {
+    width: 100%;
+    height: 140px; /* กำหนดความสูงรูปภาพปกให้ใหญ่ขึ้นเล็กน้อย */
+    object-fit: cover; /* ทำให้รูปภาพครอบคลุมพื้นที่โดยไม่บิดเบี้ยว */
+    display: block;
+    border-bottom: 2px solid #444; /* ขอบล่างรูปภาพปก */
+    image-rendering: pixelated; /* สำคัญสำหรับรูปภาพสไตล์พิกเซล */
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .card-thumbnail {
+    transform: scale(1.05); /* รูปภาพปกขยายเล็กน้อยเมื่อ Hover */
+}
+
+.card-info {
+    padding: 15px;
+    flex-grow: 1; /* ทำให้ info block ขยายเต็มพื้นที่ที่เหลือ */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-family: 'Press Start 2P', cursive, sans-serif; /* ใช้ฟอนต์พิกเซลสำหรับชื่อการ์ด */
+    font-size: 1.0em; /* ปรับขนาดเล็กน้อย */
+    color: #f0f0f0;
+    margin-bottom: 5px;
+    line-height: 1.3;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+    /* หากชื่อยาวเกิน ให้ตัดออกและแสดง ... */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-author {
+    font-family: sans-serif; /* อาจใช้ฟอนต์ปกติเพื่อให้อ่านง่าย */
+    font-size: 0.8em;
+    color: #a0a0a0;
+    margin-bottom: 10px;
+}
+
+.card-stats {
+    font-family: sans-serif; /* อาจใช้ฟอนต์ปกติ */
+    font-size: 0.75em;
+    color: #b0b0b0;
+    margin-top: auto; /* ดัน stats ไปด้านล่าง */
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: brightness(0.8); /* ทำให้ไอคอนสลัวเล็กน้อย */
+}
+
+/* Styles for Action Buttons inside Cards */
+.card-actions {
+    display: flex;
+    gap: 10px; /* ระยะห่างระหว่างปุ่ม "View" และ "Install" */
+    margin-top: 10px;
+    justify-content: flex-end; /* จัดปุ่มไปทางขวา */
+}
+
+.action-btn {
+    display: flex;
+    align-items: center; /* จัดเรียงไอคอนและข้อความให้อยู่กึ่งกลางในแนวนอน */
+    gap: 5px; /* ระยะห่างระหว่างไอคอนและข้อความ */
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive, sans-serif; /* ใช้ฟอนต์พิกเซล */
+    font-size: 0.8em; /* ขนาดข้อความปุ่ม */
+    transition: all 0.2s ease-out; /* Smooth transition */
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5); /* เงาข้อความ */
+    border: 2px solid transparent; /* ขอบเริ่มต้น (หนาขึ้นเล็กน้อย) */
+    image-rendering: pixelated; /* เพื่อให้ฟอนต์พิกเซลไม่เบลอ */
+}
+
+/* สไตล์เฉพาะปุ่ม View */
+.view-btn {
+    background-color: #3f51b5; /* สีน้ำเงิน (คล้ายในภาพ CurseForge) */
+    color: #ffffff;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4); /* เงาแบบพิกเซล */
+}
+
+.view-btn:hover {
+    background-color: #303f9f; /* สีน้ำเงินเข้มขึ้นเมื่อ Hover */
+    transform: scale(1.08) translateY(-3px); /* ขยายใหญ่ขึ้นและเลื่อนขึ้นเล็กน้อย */
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5), 0 0 15px rgba(63, 81, 181, 0.5);
+    border-color: #536dfe;
+}
+
+/* สไตล์เฉพาะปุ่ม Download */
+.download-btn { /* เพิ่มคลาสสำหรับปุ่มดาวน์โหลด */
+    background-color: #4CAF50; /* สีเขียว Minecraft */
+    color: #212121; /* ข้อความสีดำเข้ม */
+    font-weight: bold; /* ข้อความหนาขึ้นเล็กน้อย */
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4); /* เงาแบบพิกเซล */
+}
+
+.download-btn:hover {
+    background-color: #388e3c; /* สีเขียวเข้มขึ้นเมื่อ Hover */
+    transform: scale(1.08) translateY(-3px); /* ขยายใหญ่ขึ้นและเลื่อนขึ้นเล็กน้อย */
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5), 0 0 15px rgba(76, 175, 80, 0.5);
+    border-color: #81c784;
+}
+
+
+/* สไตล์สำหรับไอคอนภายในปุ่ม */
+.action-btn .btn-icon {
+    width: 18px; /* ขนาดไอคอน */
+    height: 18px;
+    object-fit: contain;
+    image-rendering: pixelated; /* สำคัญสำหรับภาพพิกเซล */
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.7)); /* เพิ่มเงาให้ไอคอน */
+    transition: transform 0.2s ease-out; /* transition สำหรับไอคอน */
+}
+
+.action-btn:hover .btn-icon {
+    transform: scale(1.15); /* ไอคอนขยายใหญ่ขึ้นอีกนิดเมื่อปุ่ม Hover */
+}
+
+/* ปุ่ม View All ด้านล่าง Grid */
+.view-all-wrapper {
+    grid-column: 1 / -1; /* ทำให้ wrapper ครอบคลุมทุกคอลัมน์ใน grid */
+    text-align: right; /* จัดปุ่มไปทางขวา */
+    margin-top: 30px; /* ระยะห่างจากด้านบน */
+}
+
+.view-all-btn {
+    display: inline-block;
+    background-color: #555; /* สีเทาเข้ม */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border: 2px solid #777;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+.view-all-btn:hover {
+    background-color: #777;
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.6);
+}
+
+/* --- 6. Responsive Design (การปรับแต่งสำหรับหน้าจอขนาดเล็ก) --- */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+    .main-content {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 40px;
+    }
+    .main-content h1 {
+        font-size: 2.8em;
+    }
+    .main-content p {
+        font-size: 1.1em;
+        line-height: 1.7;
+    }
+    .background-options {
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+    .select-bg-item {
+        padding: 10px;
+    }
+    .select-bg-item img {
+        max-width: 100px;
+    }
+    .select-bg-item.text-link-option {
+        padding: 15px 25px;
+    }
+    /* Responsive adjustments for slider */
+    .slider-container {
+        max-width: 90%;
+    }
+    .slider-button {
+        padding: 10px 15px;
+        font-size: 1.5em;
+    }
+    .slider-dots {
+        bottom: 10px;
+        gap: 8px;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    .image-slider-section {
+        padding: 40px 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    /* Responsive adjustments for game cards and buttons */
+    .section-title {
+        font-size: 2em;
+    }
+    .game-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* ปรับขนาดการ์ดเล็กลง */
+        gap: 25px;
+    }
+    .game-card {
+        width: auto; /* ให้มันปรับตาม grid */
+    }
+    .card-thumbnail {
+        height: 120px;
+    }
+    .card-title {
+        font-size: 0.95em;
+    }
+    .action-btn {
+        padding: 7px 10px;
+        font-size: 0.75em;
+    }
+    .action-btn .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* จัด Navbar เป็นแนวตั้ง */
+        text-align: center;
+        padding: 0 10px;
+    }
+    .logo {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .menu {
+        flex-direction: column; /* จัดเมนูเป็นแนวตั้ง */
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .menu a {
+        font-size: 16px;
+        padding: 10px 0;
+        display: block;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    .menu a:hover {
+        background-color: rgba(52, 250, 111, 0.7);
+    }
+
+    .main-content {
+        margin: 40px auto;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+    .main-content h1 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+    .main-content p {
+        font-size: 1em;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    .background-options {
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .button-pair {
+        gap: 8px;
+    }
+    .select-bg-item {
+        padding: 8px;
+        border-radius: 8px;
+    }
+    .select-bg-item img {
+        max-width: 90px;
+        border-radius: 6px;
+    }
+    .select-bg-item.text-link-option {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    .select-bg-item.active {
+        box-shadow: 0 0 0 3px #34fa6f, 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    .select-bg-item.active + .pair-label {
+        font-size: 0.9em;
+        text-shadow: 0 0 6px rgba(52, 250, 111, 0.6);
+    }
+    /* Responsive adjustments for slider */
+    .slider-container {
+        max-width: 90%;
+    }
+    .slider-button {
+        padding: 10px 15px;
+        font-size: 1.5em;
+    }
+    .slider-dots {
+        bottom: 10px;
+        gap: 8px;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    .image-slider-section {
+        padding: 40px 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    /* Responsive adjustments for game cards and buttons */
+    .section-title {
+        font-size: 1.8em;
+    }
+    .game-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* ลดขนาดการ์ดอีก */
+        gap: 20px;
+        margin: 40px auto;
+    }
+    .card-thumbnail {
+        height: 100px;
+    }
+    .card-title {
+        font-size: 0.9em;
+    }
+    .card-author {
+        font-size: 0.75em;
+    }
+    .card-stats {
+        font-size: 0.7em;
+    }
+    .action-btn {
+        padding: 6px 8px;
+        font-size: 0.7em;
+        gap: 4px;
+    }
+    .action-btn .btn-icon {
+        width: 14px;
+        height: 14px;
+    }
+    .view-all-wrapper {
+        text-align: center; /* จัดปุ่ม View all กลางบนมือถือ */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+    .menu {
+        gap: 5px;
+    }
+    .menu a {
+        font-size: 14px;
+        padding: 6px 0;
+    }
+    .main-content {
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .main-content h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+    .main-content p {
+        font-size: 0.9em;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+    .background-options {
+        flex-direction: column; /* ตัวเลือกเรียงเป็นแนวตั้งบนจอเล็กสุด */
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .select-bg-item {
+        max-width: 90%; /* ให้ตัวเลือกเต็มความกว้าง */
+        width: 100%; /* ให้ตัวเลือกเต็มความกว้าง */
+        padding: 10px;
+        margin: 0 auto; /* จัดกึ่งกลาง */
+    }
+    .select-bg-item img {
+        max-width: 80px;
+    }
+    .select-bg-item.text-link-option {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+    .button-pair {
+        gap: 5px;
+    }
+    .pair-label {
+        font-size: 0.8em;
+    }
+    /* Responsive adjustments for slider */
+    .slider-button {
+        padding: 8px 12px;
+        font-size: 1.2em;
+    }
+    .slider-dots {
+        bottom: 8px;
+        gap: 6px;
+    }
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    .image-slider-section {
+        padding: 20px 10px;
+    }
+    /* Responsive adjustments for game cards and buttons */
+    .section-title {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+    .game-cards-container {
+        grid-template-columns: 1fr; /* เรียงการ์ดเป็นคอลัมน์เดียว */
+        padding: 0 15px;
+        gap: 25px;
+    }
+    .game-card {
+        max-width: 300px; /* จำกัดความกว้างสูงสุดของการ์ดเดียว */
+        margin: 0 auto; /* จัดกลางการ์ด */
+    }
+    .card-thumbnail {
+        height: 150px; /* อาจจะเพิ่มความสูงกลับมาเล็กน้อยให้เห็นชัดเจนบนมือถือ */
+    }
+    .card-actions {
+        flex-direction: column; /* ให้ปุ่มเรียงแนวตั้งบนมือถือจอเล็ก */
+        align-items: stretch; /* ให้ปุ่มขยายเต็มความกว้างของการ์ด */
+        gap: 8px;
+    }
+    .action-btn {
+        width: 100%; /* ปุ่มขยายเต็มความกว้างของการ์ด */
+        justify-content: center; /* จัดกลางไอคอนและข้อความ */
+        padding: 10px 15px;
+        font-size: 0.8em;
+    }
+    .action-btn .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+    .view-all-btn {
+        width: 100%; /* ทำให้ปุ่ม View All เต็มความกว้าง */
+    }
+}
