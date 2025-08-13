@@ -1,0 +1,861 @@
+/* =================================================================
+   new-page-styles.css - ไฟล์สไตล์สำหรับหน้า Landing Page ใหม่ (ฉบับสมบูรณ์)
+   ปรับปรุงโครงสร้าง, คอมเมนต์, และความเข้ากันของสไตล์
+   ================================================================= */
+
+/* --- นำเข้าฟอนต์จาก Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* =======================================
+   1. Global Styles
+   ======================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Padding และ border ไม่เพิ่มขนาด element */
+}
+
+html {
+    height: 100%; /* สำคัญสำหรับ Parallax Effect */
+    overflow-y: scroll; /* HTML มี Scrollbar เพื่อรองรับ Parallax */
+    scroll-behavior: smooth; /* การเลื่อนหน้าที่นุ่มนวล */
+}
+
+body {
+    min-height: 100vh; /* ความสูงขั้นต่ำเต็มหน้าจอ */
+    color: #e0e0e0; /* สีข้อความเริ่มต้น */
+    font-family: 'Sarabun', sans-serif; /* ฟอนต์หลักสำหรับเนื้อหา */
+    position: relative; /* สำหรับจัดตำแหน่งองค์ประกอบลูก */
+
+    /* Transition สำหรับการเปลี่ยนพื้นหลังและสี */
+    transition: background-image 0.8s ease-in-out, background-color 0.8s ease-in-out, opacity 0.8s ease-in-out;
+
+    /* พื้นหลังเริ่มต้น (The Sims 4 Theme) */
+    background-color: #1a1a1a;
+    background-image: url('https://w.wallhaven.cc/full/8x/wallhaven-8x1662.png');
+    background-size: cover; /* คลุมพื้นที่ทั้งหมด */
+    background-position: center; /* จัดกลาง */
+    background-repeat: no-repeat; /* ไม่ซ้ำ */
+    background-attachment: fixed; /* Parallax Effect: พื้นหลังติดกับ viewport */
+
+    opacity: 1; /* เริ่มต้นทึบแสง */
+}
+
+/* =======================================
+   2. Navigation Bar
+   ======================================= */
+nav {
+    background-color: rgba(30, 30, 30, 0.9); /* Navbar โปร่งแสงเล็กน้อย */
+    color: #E0E0E0;
+    padding: 1rem 0;
+    position: sticky; /* Navbar ติดอยู่ด้านบนเมื่อเลื่อน */
+    top: 0;
+    z-index: 1000; /* อยู่ด้านบนสุด */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* เพิ่มเงา */
+    border-bottom: 2px solid #5A5A5A; /* ขอบด้านล่าง */
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #34fa6f;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.highlight-digit {
+    color: #FFD700; /* สีทองสำหรับตัวเลขในโลโก้ */
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    font-family: 'Sarabun', sans-serif;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.menu a:hover {
+    background-color: #34fa6f;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.4);
+}
+
+/* =======================================
+   3. Main Content Area
+   ======================================= */
+.main-content-wrapper {
+    max-width: 650px; /* ปรับลดความกว้างสูงสุด */
+    margin: 60px auto; /* ลดระยะห่างด้านบน/ล่าง */
+    padding: 40px; /* ลด padding */
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8em; /* ลดขนาดหัวข้อ */
+    margin-bottom: 25px;
+    color: #34fa6f;
+    text-shadow: 0 0 15px rgba(52, 250, 111, 0.7), 0 0 25px rgba(52, 250, 111, 0.4);
+    line-height: 1.2;
+}
+
+/* =================================================================
+   4. Background Selection Items (ส่วนเลือกเกม/พื้นหลัง)
+   ================================================================= */
+.game-selection-and-view-all {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* ลดระยะห่างระหว่างช่อง */
+    margin-top: 40px; /* ลดระยะห่างด้านบน */
+    margin-bottom: 50px; /* ลดระยะห่างด้านล่าง */
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px; /* ลด padding ด้านข้าง */
+}
+
+/* สไตล์สำหรับแต่ละคู่ (ช่องปุ่ม: รูปภาพ + ป้ายกำกับ) */
+.button-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px; /* ลดมุมโค้งมน */
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5); /* ลดเงา */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    width: 220px; /* ลดความกว้างของแต่ละช่องปุ่ม */
+    min-width: 180px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.button-pair:hover {
+    transform: translateY(-7px) scale(1.02); /* ลดการยกขึ้นเล็กน้อย */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-color: #34fa6f;
+}
+
+/* สไตล์สำหรับป้ายกำกับใต้รูปภาพ (ชื่อเกม) */
+.pair-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em; /* ลดขนาดป้ายกำกับ */
+    color: #FFD700;
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.4), 0 0 10px rgba(255, 215, 0, 0.2);
+    font-weight: 700;
+    padding: 10px 8px; /* ลด padding */
+    text-align: center;
+    width: 100%;
+}
+
+.button-pair:hover .pair-label {
+    color: #34fa6f;
+    text-shadow: 0 0 7px rgba(52, 250, 111, 0.7), 0 0 12px rgba(52, 250, 111, 0.4);
+}
+
+/* สไตล์สำหรับ .select-bg-item ที่เป็นตัวห่อหุ้มรูปภาพ */
+.select-bg-item {
+    display: block;
+    width: 100%;
+    height: 120px; /* ลดความสูงของพื้นที่รูปภาพ */
+    overflow: hidden;
+    border-radius: 8px 8px 0 0; /* มุมโค้งมนเฉพาะด้านบน */
+}
+
+/* สไตล์สำหรับรูปภาพ thumbnail ภายใน .select-bg-item */
+.select-bg-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.select-bg-item:hover img {
+    transform: scale(1.07); /* ลดการซูมรูปภาพ */
+}
+
+/* สไตล์สำหรับตัวเลือกที่ถูกเลือก (Active State) */
+.button-pair.active {
+    background-color: rgba(52, 250, 111, 0.2);
+    border-color: #34fa6f;
+    box-shadow: 0 0 0 2px #34fa6f, 0 7px 20px rgba(0, 0, 0, 0.7); /* ลดเงาและขนาดของเงาเรืองแสง */
+    transform: translateY(-3px);
+}
+
+.button-pair.active .pair-label {
+    color: #34fa6f;
+    text-shadow: 0 0 7px rgba(52, 250, 111, 0.6);
+}
+
+/* =======================================
+   5. Image Slider Styles
+   ======================================= */
+.image-slider-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+}
+
+.slider-track img.slider-item {
+    width: 100%;
+    flex-shrink: 0;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Slider Buttons */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 2em;
+    border-radius: 8px;
+    z-index: 5;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.slider-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-button.prev {
+    left: 15px;
+}
+
+.slider-button.next {
+    right: 15px;
+}
+
+/* Slider Dots */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background-color: #34fa6f;
+    transform: scale(1.2);
+}
+
+.dot:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+/* =======================================
+   6. Game Cards & Action Buttons Styles
+   ======================================= */
+.game-section {
+    padding: 60px 0;
+    background-color: transparent; /* โปร่งใสเพื่อให้เห็นพื้นหลัง body */
+}
+
+.section-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.2em;
+    color: #4CAF50; /* สีเขียว Minecraft */
+    text-shadow: 3px 3px 0px #2F4F4F; /* เงาแบบพิกเซล */
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.game-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Grid layout */
+    gap: 30px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+.game-card {
+    background-color: #2a2a2a;
+    border: 3px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) translateX(-8px); /* เลื่อนขึ้นและซ้ายมากขึ้น */
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.7), 0 0 20px rgba(76, 175, 80, 0.4); /* เงาเข้มขึ้นและมีเรืองแสง */
+    border-color: #4CAF50;
+}
+
+.card-thumbnail {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 2px solid #444;
+    image-rendering: pixelated;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .card-thumbnail {
+    transform: scale(1.05); /* รูปภาพปกขยายเล็กน้อย */
+}
+
+.card-info {
+    padding: 15px;
+    flex-grow: 1; /* ขยายเต็มพื้นที่ */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.0em;
+    color: #f0f0f0;
+    margin-bottom: 5px;
+    line-height: 1.3;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-author {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 0.8em;
+    color: #a0a0a0;
+    margin-bottom: 10px;
+}
+
+.card-stats {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 0.75em;
+    color: #b0b0b0;
+    margin-top: auto; /* ดัน stats ไปด้านล่าง */
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: brightness(0.8);
+}
+
+/* Styles for Action Buttons inside Cards */
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8em;
+    transition: all 0.2s ease-out;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+    border: 2px solid transparent;
+    image-rendering: pixelated;
+}
+
+/* สไตล์เฉพาะปุ่ม View */
+.view-btn {
+    background-color: #3f51b5;
+    color: #ffffff;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+.view-btn:hover {
+    background-color: #303f9f;
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5), 0 0 15px rgba(63, 81, 181, 0.5);
+    border-color: #536dfe;
+}
+
+/* สไตล์เฉพาะปุ่ม Install */
+.install-btn {
+    background-color: #4CAF50;
+    color: #212121;
+    font-weight: bold;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+.install-btn:hover {
+    background-color: #388e3c;
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5), 0 0 15px rgba(76, 175, 80, 0.5);
+    border-color: #81c784;
+}
+
+/* สไตล์สำหรับไอคอนภายในปุ่ม */
+.action-btn .btn-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.7));
+    transition: transform 0.2s ease-out;
+}
+
+.action-btn:hover .btn-icon {
+    transform: scale(1.15); /* ไอคอนขยายใหญ่ขึ้นเมื่อปุ่ม Hover */
+}
+
+/* ปุ่ม View All ด้านล่าง Grid */
+.view-all-wrapper {
+    grid-column: 1 / -1; /* ครอบคลุมทุกคอลัมน์ใน grid */
+    text-align: right;
+    margin-top: 30px;
+}
+
+.view-all-btn {
+    display: inline-block;
+    background-color: #555;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    border: 2px solid #777;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+.view-all-btn:hover {
+    background-color: #777;
+    transform: translateY(-2px) translateX(-2px);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.6);
+}
+
+/* =======================================
+   7. Utility Classes
+   ======================================= */
+.spacer {
+    height: 60px;
+    width: 100%;
+    display: block;
+}
+
+/* =======================================
+   8. Responsive Design
+   ======================================= */
+/* สำหรับหน้าจอขนาดกลาง (เช่น แล็ปท็อป) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+    .main-content-wrapper {
+        max-width: 600px; /* ปรับลดความกว้าง */
+        margin: 50px auto;
+        padding: 35px;
+    }
+    .page-title {
+        font-size: 2.5em; /* ลดขนาดหัวข้อ */
+    }
+    .game-selection-and-view-all {
+        gap: 18px;
+        margin-top: 35px;
+        margin-bottom: 45px;
+        padding: 0 8px;
+    }
+    .button-pair {
+        width: 200px; /* ปรับขนาดปุ่ม */
+        border-radius: 8px;
+    }
+    .select-bg-item {
+        height: 110px; /* ลดความสูงรูปภาพ */
+        border-radius: 6px 6px 0 0;
+    }
+    .pair-label {
+        font-size: 1.1em;
+        padding: 8px 6px;
+    }
+    .button-pair:hover {
+        transform: translateY(-7px) scale(1.02); /* ปรับ hover effect */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    }
+    /* Slider responsive */
+    .slider-container {
+        max-width: 90%;
+    }
+    .slider-button {
+        padding: 10px 15px;
+        font-size: 1.5em;
+    }
+    .slider-dots {
+        bottom: 10px;
+        gap: 8px;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    .image-slider-section {
+        padding: 40px 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    /* Game cards responsive */
+    .section-title {
+        font-size: 2em;
+    }
+    .game-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+    }
+    .card-thumbnail {
+        height: 120px;
+    }
+    .card-title {
+        font-size: 0.95em;
+    }
+    .action-btn {
+        padding: 7px 10px;
+        font-size: 0.75em;
+    }
+    .action-btn .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* สำหรับหน้าจอแท็บเล็ตแนวตั้งและมือถือขนาดใหญ่ */
+@media (max-width: 768px) {
+    /* Navbar Responsive */
+    .container {
+        flex-direction: column; /* จัด Navbar เป็นแนวตั้ง */
+        text-align: center;
+        padding: 0 10px;
+    }
+    .logo {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .menu {
+        flex-direction: column; /* จัดเมนูเป็นแนวตั้ง */
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .menu a {
+        font-size: 16px;
+        padding: 10px 0;
+        display: block;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    .menu a:hover {
+        background-color: rgba(52, 250, 111, 0.7);
+    }
+
+    /* Main Content Responsive */
+    .main-content-wrapper {
+        margin: 40px auto;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+    .page-title {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    /* Background Selection (ปุ่มเกม) Responsive */
+    .game-selection-and-view-all { /* เปลี่ยนชื่อจาก .background-options */
+        flex-direction: column; /* เรียงเป็นคอลัมน์เดียว */
+        gap: 30px;
+        margin-bottom: 40px;
+        margin-top: 30px;
+        max-width: 100%;
+    }
+    .button-pair {
+        width: 90%; /* ให้ปุ่มเต็มความกว้างมากขึ้น */
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: 15px;
+        /* ยกเลิก hover effect บน mobile */
+        transform: none !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6) !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    .button-pair:hover { /* รีเซ็ต hover บนมือถือ */
+        transform: none;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .select-bg-item {
+        height: 180px;
+        border-radius: 13px 13px 0 0;
+    }
+    .select-bg-item img:hover {
+        transform: none; /* ยกเลิกซูมรูปภาพบนมือถือ */
+    }
+    .pair-label {
+        font-size: 1.4em;
+        padding-bottom: 12px;
+    }
+
+    /* Slider Responsive */
+    .slider-container {
+        max-width: 90%;
+    }
+    .slider-button {
+        padding: 10px 15px;
+        font-size: 1.5em;
+    }
+    .slider-dots {
+        bottom: 10px;
+        gap: 8px;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+    .image-slider-section {
+        padding: 40px 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* Game Cards Responsive */
+    .section-title {
+        font-size: 1.8em;
+    }
+    .game-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        margin: 40px auto;
+    }
+    .card-thumbnail {
+        height: 100px;
+    }
+    .card-title {
+        font-size: 0.9em;
+    }
+    .card-author {
+        font-size: 0.75em;
+    }
+    .card-stats {
+        font-size: 0.7em;
+    }
+    .action-btn {
+        padding: 6px 8px;
+        font-size: 0.7em;
+        gap: 4px;
+    }
+    .action-btn .btn-icon {
+        width: 14px;
+        height: 14px;
+    }
+    .view-all-wrapper {
+        text-align: center; /* จัดปุ่ม View all กลางบนมือถือ */
+    }
+}
+
+/* สำหรับหน้าจอโทรศัพท์มือถือ */
+@media (max-width: 480px) {
+    /* Navbar Responsive */
+    .logo {
+        font-size: 20px;
+    }
+    .menu {
+        gap: 5px;
+    }
+    .menu a {
+        font-size: 14px;
+        padding: 6px 0;
+    }
+
+    /* Main Content Responsive */
+    .main-content-wrapper {
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .page-title {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    /* Background Selection (ปุ่มเกม) Responsive */
+    .game-selection-and-view-all { /* เปลี่ยนชื่อจาก .background-options */
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 30px;
+        margin-top: 25px;
+    }
+    .button-pair {
+        width: 95%;
+        max-width: 320px;
+        border-radius: 12px;
+    }
+    .select-bg-item {
+        height: 150px;
+        border-radius: 10px 10px 0 0;
+    }
+    .pair-label {
+        font-size: 1.2em;
+        padding-bottom: 10px;
+    }
+
+    /* Slider Responsive */
+    .slider-button {
+        padding: 8px 12px;
+        font-size: 1.2em;
+    }
+    .slider-dots {
+        bottom: 8px;
+        gap: 6px;
+    }
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    .image-slider-section {
+        padding: 20px 10px;
+    }
+
+    /* Game Cards Responsive */
+    .section-title {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+    .game-cards-container {
+        grid-template-columns: 1fr; /* เรียงการ์ดเป็นคอลัมน์เดียว */
+        padding: 0 15px;
+        gap: 25px;
+    }
+    .game-card {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .card-thumbnail {
+        height: 150px;
+    }
+    .card-actions {
+        flex-direction: column; /* ปุ่มเรียงแนวตั้งบนมือถือจอเล็ก */
+        align-items: stretch;
+        gap: 8px;
+    }
+    .action-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 15px;
+        font-size: 0.8em;
+    }
+    .action-btn .btn-icon {
+        width: 16px;
+        height: 16px;
+    }
+    .view-all-btn {
+        width: 100%;
+    }
+}

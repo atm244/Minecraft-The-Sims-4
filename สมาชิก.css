@@ -1,0 +1,446 @@
+/* ======================================= */
+/* สมาชิก.css - ไฟล์สไตล์สำหรับหน้าสมาชิก  */
+/* ======================================= */
+
+/* --- นำเข้าฟอนต์จาก Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Sarabun:wght@300;400;600&display=swap');
+
+/* --- 1. Global Styles (การตั้งค่าทั่วไป) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh; /* ทำให้ body สูงเต็มหน้าจอเสมอ */
+    color: white; /* สีข้อความเริ่มต้น: ขาว */
+    font-family: 'Sarabun', sans-serif; /* ฟอนต์หลักสำหรับเนื้อหาทั่วไป */
+    position: relative; /* สำคัญสำหรับเอฟเฟกต์พื้นหลัง */
+    overflow-x: hidden; /* ซ่อน scrollbar แนวนอนที่อาจเกิดขึ้น */
+    margin: 0;
+    padding: 0;
+}
+
+/* --- 2. Animated Gradient Background (พื้นหลังไล่ระดับสีเคลื่อนไหว) --- */
+body {
+    /* กำหนดสี Gradient ที่คุณต้องการ (สามารถปรับเปลี่ยนได้) */
+    background: linear-gradient(45deg, #2c3e50, #3498db, #8e44ad, #e74c3c);
+    background-size: 400% 400%; /* ทำให้ Gradient มีขนาดใหญ่กว่าหน้าจอ เพื่อให้เคลื่อนไหวได้ราบรื่น */
+    animation: gradientMovement 15s ease infinite; /* เรียกใช้ Animation */
+}
+
+@keyframes gradientMovement {
+    0% {
+        background-position: 0% 50%; /* เริ่มต้นที่ตำแหน่งนี้ */
+    }
+    50% {
+        background-position: 100% 50%; /* เคลื่อนไปตำแหน่งนี้กลางทาง */
+    }
+    100% {
+        background-position: 0% 50%; /* กลับมาตำแหน่งเริ่มต้นเมื่อจบรอบ */
+    }
+}
+
+/* --- 3. Navigation Bar (Nav Bar) --- */
+nav {
+    background-color: rgba(0, 0, 0, 0.9); /* Navbar สีดำเข้มขึ้นและโปร่งแสงเล็กน้อย */
+    color: white;
+    padding: 1rem 0;
+    position: sticky; /* ทำให้ Navbar ติดอยู่ด้านบนเมื่อเลื่อนหน้าจอ */
+    top: 0;
+    z-index: 1000; /* ให้ Navbar อยู่ด้านบนสุดขององค์ประกอบอื่นๆ */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้ดูมีมิติและเด่นขึ้น */
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* เพิ่ม padding ซ้ายขวาให้คอนเทนเนอร์ */
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif; /* ใช้ฟอนต์ Orbitron สำหรับโลโก้ */
+    font-size: 28px; /* ปรับขนาดโลโก้ให้ใหญ่ขึ้นเล็กน้อย */
+    font-weight: 700; /* ทำให้หนาขึ้น */
+    color: #34fa6f; /* สีเขียวสดใส (เดียวกับ highlight-digit) */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* เพิ่มเงาข้อความให้เด่นขึ้น */
+}
+
+.highlight-digit {
+    color: #FFD700; /* เปลี่ยนสีตัวเลขเป็นสีทอง เพื่อความแตกต่างและโดดเด่น */
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px; /* ปรับขนาดลิงก์เมนูให้ใหญ่ขึ้นเล็กน้อย */
+    padding: 8px 15px; /* เพิ่ม padding ให้กดง่ายขึ้น */
+    transition: all 0.3s ease; /* ใช้ all เพื่อ Transition ทุกอย่าง */
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px; /* เพิ่มมุมโค้งมน */
+}
+
+.menu a:hover {
+    background-color: #34fa6f; /* เปลี่ยนสีพื้นหลังเมื่อ Hover เป็นสีเขียว */
+    color: black; /* เปลี่ยนสีข้อความเมื่อ Hover เป็นสีดำ */
+    transform: translateY(-2px); /* ยกขึ้นเล็กน้อยเมื่อ Hover */
+    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.4); /* เพิ่มเงาสีเขียวเมื่อ Hover */
+}
+
+/* --- 4. Content Area (ส่วนเนื้อหาหลัก - About Content) --- */
+.about-content {
+    max-width: 900px; /* ขยายความกว้างสูงสุดของเนื้อหา */
+    margin: 80px auto 40px auto; /* เพิ่ม margin บนและลด margin ล่าง */
+    padding: 40px; /* เพิ่ม padding ให้เนื้อหา */
+    background-color: rgba(0, 0, 0, 0.6); /* พื้นหลังโปร่งแสงสีดำเข้มขึ้น เพื่อให้อ่านง่าย */
+    border-radius: 15px; /* เพิ่มความโค้งมนของขอบ */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้ดูมีมิติและลอยขึ้น */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(5px); /* เพิ่มเอฟเฟกต์เบลอพื้นหลังเล็กน้อย (Modern CSS) */
+    -webkit-backdrop-filter: blur(5px); /* สำหรับ Safari */
+}
+
+.about-content h1 {
+    font-family: 'Orbitron', sans-serif; /* ใช้ฟอนต์ Orbitron สำหรับหัวข้อ h1 */
+    font-size: 3em; /* ขนาดหัวข้อ h1 */
+    margin-bottom: 25px; /* เพิ่มระยะห่างจากย่อหน้าแรก */
+    color: #34fa6f; /* สีเขียวสดใส */
+    text-shadow: 2px 2px 8px rgba(0, 255, 0, 0.5); /* เพิ่มเงาข้อความสีเขียว */
+}
+
+.about-content p {
+    font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ Sarabun สำหรับข้อความปกติ */
+    font-size: 1.15em; /* ขยายขนาดข้อความปกติขึ้นเล็กน้อย */
+    line-height: 1.7; /* เพิ่มระยะห่างระหว่างบรรทัดเพื่อให้อ่านง่ายขึ้น */
+    margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างย่อหน้า */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* เพิ่มเงาเล็กน้อยให้อ่านง่ายบนพื้นหลังโปร่งแสง */
+}
+
+.about-image {
+    max-width: 90%; /* ลดขนาดรูปภาพลงเล็กน้อย */
+    height: auto;
+    border-radius: 10px; /* เพิ่มความโค้งมน */
+    margin-top: 35px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* เพิ่มเงารูปภาพ */
+    transition: transform 0.3s ease; /* เพิ่ม Transition */
+}
+
+.about-image:hover {
+    transform: scale(1.02); /* ขยายรูปภาพเล็กน้อยเมื่อ Hover */
+}
+
+.image-caption {
+    font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ Sarabun */
+    font-size: 1em; /* ปรับขนาด Caption */
+    color: #c0c0c0; /* สีเทาอ่อนลง */
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.mission-statement {
+    font-family: 'Orbitron', sans-serif; /* ใช้ฟอนต์ Orbitron */
+    font-size: 1.6em; /* ขยายขนาดข้อความ Mission */
+    font-weight: 600;
+    color: #ffeb3b; /* สีเหลืองสดใส */
+    margin: 50px auto; /* ปรับ margin บน-ล่าง ให้มีระยะห่างมากขึ้น */
+    padding: 25px; /* เพิ่ม padding */
+    border: 3px solid #ffeb3b; /* เพิ่มความหนาของเส้นขอบ */
+    border-radius: 12px; /* เพิ่มความโค้งมน */
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(255, 235, 59, 0.4); /* เพิ่มเงาสีเหลือง */
+    max-width: 80%; /* จำกัดความกว้างไม่ให้ล้นจอในบางกรณี */
+}
+
+/* --- 5. Team Members (ส่วนทีมงาน) --- */
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 60px; /* เพิ่มระยะห่างด้านบน */
+    margin-bottom: 60px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+.team-member-card {
+    background-color: rgba(255, 255, 255, 0.1); /* พื้นหลังการ์ดโปร่งแสง (จาก 0.08) */
+    padding: 25px; /* เพิ่ม padding */
+    border-radius: 12px; /* เพิ่มความโค้งมน */
+    text-align: center;
+    width: 220px; /* ขยายความกว้างการ์ดเล็กน้อย */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* เพิ่มเงา */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* เพิ่ม Transition */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* เพิ่มขอบบางๆ */
+}
+
+.team-member-card:hover {
+    transform: translateY(-8px) scale(1.03); /* การ์ดขยับขึ้นและขยายเล็กน้อยเมื่อ hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* เงาเข้มขึ้น */
+}
+
+.team-member-card img {
+    width: 120px; /* ขยายขนาดรูปภาพโปรไฟล์ */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 4px solid #3498db; /* ขอบรูปภาพสีฟ้า */
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.6); /* เพิ่มเงาสีฟ้าให้รูปโปรไฟล์ */
+}
+
+.team-member-card h3 {
+    font-family: 'Sarabun', sans-serif; /* ใช้ Sarabun */
+    margin-bottom: 8px;
+    color: #3498db; /* สีชื่อทีมงาน (ฟ้า) */
+    font-size: 1.2em; /* ขยายขนาดชื่อ */
+    font-weight: 600;
+}
+
+.team-member-card p {
+    font-family: 'Sarabun', sans-serif; /* ใช้ Sarabun */
+    font-size: 0.95em; /* ปรับขนาด */
+    color: #e0e0e0; /* สีข้อความอ่อนลงเล็กน้อย */
+    line-height: 1.4;
+}
+
+/* --- 6. Buttons (.btn) --- */
+.btn {
+    display: inline-block;
+    padding: 14px 30px; /* เพิ่ม padding ให้ปุ่มใหญ่ขึ้น */
+    background-color: #34fa6f; /* เปลี่ยนสีพื้นหลังปุ่มหลักเป็นสีเขียว */
+    color: black; /* เปลี่ยนสีข้อความเป็นสีดำ */
+    text-decoration: none;
+    border: none;
+    border-radius: 8px; /* เพิ่มความโค้งมน */
+    font-size: 1.2em; /* ขยายขนาดฟอนต์ปุ่ม */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease; /* เพิ่ม Transition ให้ราบรื่นขึ้น */
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* เพิ่มเงาให้ปุ่ม */
+}
+
+.btn:hover {
+    background-color: #28a745; /* สีเขียวเข้มขึ้นเมื่อ hover */
+    transform: translateY(-3px); /* ปุ่มขยับขึ้นมากขึ้นเล็กน้อย */
+    box-shadow: 0 8px 18px rgba(0, 255, 0, 0.5); /* เพิ่มเงาสีเขียวที่เข้มขึ้นเมื่อ hover */
+}
+
+/* เอฟเฟกต์แสงวิ่งผ่านปุ่ม (Gradient Slide) */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent); /* แสงสีขาวโปร่งแสง (เพิ่ม opacity) */
+    transition: all 0.8s ease; /* ทำให้แสงวิ่งช้าลงเล็กน้อย */
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* --- 7. Utility Classes (คลาสเสริม) --- */
+.spacer1 {
+    height: 100px; /* ปรับลดความสูงของ spacer ลงเพื่อไม่ให้หน้ายาวเกินไปในการทดสอบ */
+}
+
+/* --- 8. Responsive Design (การปรับแต่งสำหรับหน้าจอขนาดเล็ก) --- */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+    .about-content {
+        max-width: 850px;
+        margin: 60px auto 30px auto;
+        padding: 30px;
+    }
+    .about-content h1 {
+        font-size: 2.5em;
+    }
+    .mission-statement {
+        font-size: 1.4em;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* จัด Navbar เป็นแนวตั้ง */
+        text-align: center;
+        padding: 0 10px;
+    }
+    .logo {
+        font-size: 26px;
+        margin-bottom: 15px; /* เพิ่มระยะห่างด้านล่างโลโก้ */
+    }
+    .menu {
+        flex-direction: column; /* จัดเมนูเป็นแนวตั้ง */
+        gap: 12px; /* ลดระยะห่าง */
+        margin-top: 10px;
+        width: 100%; /* ให้เมนูเต็มความกว้าง */
+    }
+    .menu a {
+        font-size: 16px;
+        padding: 10px 0; /* ทำให้ลิงก์เต็มความกว้าง */
+        display: block; /* ทำให้ลิงก์เป็นบล็อกเพื่อให้เต็มความกว้าง */
+        background-color: rgba(255, 255, 255, 0.05); /* เพิ่มพื้นหลังเล็กน้อยให้แต่ละเมนู */
+    }
+    .menu a:hover {
+        background-color: rgba(52, 250, 111, 0.7); /* ปรับสี hover */
+    }
+
+    .about-content {
+        margin: 40px auto 20px auto;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+    .about-content h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    .about-content p {
+        font-size: 1em;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+    .about-image {
+        max-width: 95%;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    .image-caption {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    .mission-statement {
+        font-size: 1.2em;
+        margin: 30px auto;
+        padding: 18px;
+        max-width: 90%;
+    }
+    .team-members {
+        gap: 20px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .team-member-card {
+        width: 180px; /* ลดความกว้างการ์ด */
+        padding: 20px;
+    }
+    .team-member-card img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+    .team-member-card h3 {
+        font-size: 1.1em;
+    }
+    .team-member-card p {
+        font-size: 0.85em;
+    }
+    .btn {
+        padding: 10px 22px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 22px;
+    }
+    .menu {
+        gap: 8px;
+    }
+    .menu a {
+        font-size: 15px;
+        padding: 8px 0;
+    }
+    .about-content {
+        margin: 30px auto 15px auto;
+        padding: 20px;
+    }
+    .about-content h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+    .about-content p {
+        font-size: 0.9em;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+    .mission-statement {
+        font-size: 1em;
+        margin: 25px auto;
+        padding: 15px;
+        border-width: 2px;
+    }
+    .team-members {
+        gap: 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .team-member-card {
+        width: 140px; /* ลดความกว้างการ์ดบนจอเล็กสุด */
+        padding: 15px;
+    }
+    .team-member-card img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    .team-member-card h3 {
+        font-size: 1em;
+    }
+    .team-member-card p {
+        font-size: 0.75em;
+    }
+    .btn {
+        padding: 8px 18px;
+        font-size: 0.9em;
+    }
+}
+.logo {
+    /* โค้ดเดิม... */
+    transition: all 0.3s ease; /* เพิ่ม transition */
+}
+
+.logo:hover {
+    color: #ffd700; /* เปลี่ยนเป็นสีทอง */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5); /* เพิ่มเงาเรืองแสง */
+    transform: scale(1.05); /* ขยายเล็กน้อย */
+}
+nav {
+    background-color: rgba(30, 30, 30, 0.9); /* สีดำเข้มโปร่งแสง */
+    color: #E0E0E0;
+    padding: 1rem 0;
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #5A5A5A; /* เพิ่มขอบด้านล่างให้ดูแข็งแรง */
+}
+
+h3 {
+    white-space: nowrap;
+}

@@ -1,0 +1,268 @@
+/* style.css - ไฟล์สไตล์สำหรับหน้า Landing Page */
+
+/* --- 1. Global Styles --- */
+/* นำเข้าฟอนต์จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Noto+Sans+Thai:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    overflow-y: scroll; /* ให้ HTML มี Scrollbar แทน Body */
+    scroll-behavior: smooth; /* การเลื่อนหน้าจอแบบนุ่มนวล */
+}
+
+body {
+    min-height: 100vh;
+    color: #f0f0f0; /* สีข้อความเริ่มต้น: ขาวนวล */
+    font-family: 'Noto Sans Thai', sans-serif; /* ฟอนต์หลักที่อ่านง่ายสำหรับเนื้อหา */
+    position: relative;
+    overflow-x: hidden; /* ซ่อน scrollbar แนวนอนที่อาจเกิดขึ้น */
+
+    /* *** กำหนดรูปภาพเป็นพื้นหลัง *** */
+    background-image: url('    ');
+    background-size: cover; /* ให้รูปภาพครอบคลุมพื้นที่ทั้งหมด */
+    background-position: center; /* จัดตำแหน่งรูปภาพให้อยู่กึ่งกลาง */
+    background-repeat: no-repeat; /* ไม่ให้รูปภาพซ้ำ */
+    background-attachment: fixed; /* ทำให้พื้นหลังอยู่กับที่เมื่อเลื่อน */
+    background-color: #3B3B3B; /* สีสำรองถ้าโหลดภาพไม่ได้ */
+}
+
+/* --- 2. Navigation Bar (Nav Bar) --- */
+nav {
+    background-color: rgba(0, 0, 0, 0.85); /* Navbar สีดำเข้มโปร่งแสง */
+    color: white;
+    padding: 0.8rem 0;
+    position: sticky; /* ทำให้ Navbar ติดอยู่ด้านบนเมื่อเลื่อนหน้าจอ */
+    top: 0;
+    z-index: 10; /* ให้ Navbar อยู่ด้านบนสุดขององค์ประกอบอื่นๆ */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* เพิ่มเงาให้ดูมีมิติ */
+}
+
+.container {
+    max-width: 1200px; /* กำหนดความกว้างสูงสุดของเนื้อหา */
+    margin: 0 auto; /* จัดกึ่งกลางคอนเทนเนอร์ */
+    display: flex; /* ใช้ Flexbox เพื่อจัดเรียงโลโก้และเมนู */
+    justify-content: space-between; /* กระจายช่องว่างระหว่างโลโก้และเมนู */
+    align-items: center; /* จัดเรียงในแนวตั้งกึ่งกลาง */
+    padding: 0 20px; /* ระยะห่างซ้ายขวา */
+}
+
+.logo {
+    font-family: 'Luckiest Guy', cursive; /* ใช้ฟอนต์ Luckiest Guy สำหรับโลโก้ */
+    font-size: 32px;
+    font-weight: 600;
+    color: #4CAF50; /* สีเขียวสดใส */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* เพิ่มเงาข้อความ */
+}
+
+.highlight-digit {
+    color: #FFD700; /* สีทองสำหรับตัวเลข */
+}
+
+.menu {
+    list-style: none; /* ลบสัญลักษณ์รายการ */
+    display: flex; /* ใช้ Flexbox สำหรับรายการเมนู */
+    gap: 35px; /* ระยะห่างระหว่างรายการเมนู */
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #f0f0f0; /* สีข้อความลิงก์ */
+    text-decoration: none; /* ลบขีดเส้นใต้ลิงก์ */
+    font-size: 17px;
+    padding: 8px 15px;
+    transition: all 0.3s ease; /* เพิ่ม Transition สำหรับ Hover Effect */
+    border-radius: 5px;
+    font-weight: 400;
+}
+
+.menu a:hover {
+    background-color: rgba(76, 175, 80, 0.7); /* สีพื้นหลังเมื่อ Hover */
+    color: white;
+    transform: translateY(-2px); /* ยกขึ้นเล็กน้อยเมื่อ Hover */
+}
+
+/* --- 3. Main Content Area (ส่วนเนื้อหาหลัก) --- */
+.main-content-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center; /* จัดกึ่งกลางแนวตั้งเริ่มต้น */
+    justify-content: flex-start; /* จัดชิดซ้าย */
+    min-height: calc(100vh - 80px); /* ความสูงขั้นต่ำ ให้เหลือพื้นที่สำหรับ Navbar */
+    padding: 20px;
+}
+
+.corner-box {
+    max-width: 800px; /* ความกว้างสูงสุดของกล่องข้อความ */
+    text-align: left;
+    padding: 20px;
+    margin-top: -400px; /* ดึงขึ้นด้านบนอย่างมาก */
+    margin-left: 50px; /* ระยะห่างจากขอบซ้าย */
+}
+
+.corner-box h1 {
+    font-family: 'Luckiest Guy', cursive; /* ใช้ฟอนต์ Luckiest Guy สำหรับหัวข้อหลัก */
+    font-size: 1.6em; /* ขนาดฟอนต์หัวข้อหลัก */
+    margin-bottom: 20px; /* ระยะห่างจากข้อความ tagline */
+    color: #FFD700; /* สีทองสำหรับหัวข้อ */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* เงาข้อความ */
+    line-height: 1.2; /* ระยะห่างระหว่างบรรทัด */
+    white-space: normal; /* อนุญาตให้ข้อความขึ้นบรรทัดใหม่ */
+}
+
+.corner-box h1 .tagline {
+    display: block; /* ทำให้ขึ้นบรรทัดใหม่จาก h1 หลัก */
+    font-family: 'Noto Sans Thai', sans-serif; /* ใช้ฟอนต์ Noto Sans Thai */
+    font-size: 0.8em; /* ขนาดฟอนต์สำหรับ tagline (เล็กกว่า h1) */
+    font-weight: 400;
+    color: #00BFFF; /* สีฟ้าอ่อน */
+    margin-top: 10px; /* ระยะห่างจาก h1 หลัก */
+    line-height: 1.3;
+}
+
+.corner-box p {
+    font-family: 'Noto Sans Thai', sans-serif; /* ใช้ฟอนต์ Noto Sans Thai สำหรับเนื้อหา p */
+    font-size: 1.0em; /* ขนาดฟอนต์เนื้อหา */
+    line-height: 1.6; /* ระยะห่างระหว่างบรรทัดเพื่อให้อ่านง่าย */
+    margin-bottom: 30px; /* ระยะห่างจากปุ่ม */
+    color: #f0f0f0; /* สีข้อความ */
+    font-weight: 300; /* น้ำหนักฟอนต์บางลง */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* เงาข้อความ */
+}
+
+.btn {
+    display: inline-block; /* ทำให้เป็นปุ่มแบบอินไลน์บล็อก */
+    padding: 12px 25px;
+    background-color: #4CAF50; /* สีเขียวปุ่ม */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px; /* มุมโค้งมน */
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease; /* Transition สำหรับ Hover Effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* เงาปุ่ม */
+}
+
+.btn:hover {
+    background-color: #388E3C; /* สีเขียวเข้มขึ้นเมื่อ Hover */
+    transform: translateY(-3px); /* ยกขึ้นเล็กน้อยเมื่อ Hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* เงาที่เข้มขึ้น */
+}
+
+/* --- 4. Utility Classes (คลาสเสริม) --- */
+.spacer1 {
+    height: 500px; /* คลาสสำหรับเว้นระยะห่าง */
+}
+
+/* --- 5. Responsive Adjustments (การปรับแต่งสำหรับหน้าจอขนาดเล็ก) --- */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 28px;
+    }
+    .menu {
+        gap: 15px; /* ลดระยะห่างเมนูบนมือถือ */
+    }
+    .menu a {
+        font-size: 15px;
+        padding: 6px 10px;
+    }
+    .main-content-wrapper {
+        min-height: calc(100vh - 80px);
+        padding-top: 15px;
+        justify-content: center; /* จัดกึ่งกลางแนวนอนบนมือถือ */
+    }
+    .corner-box {
+        padding: 20px;
+        margin: 0 10px; /* จัดกึ่งกลางแนวนอนด้วย margin: 0 auto; ถ้าต้องการให้เต็มจอมากขึ้น */
+        margin-top: -300px; /* ดึงขึ้นด้านบนบนมือถือ */
+        text-align: center; /* จัดข้อความกลางบนมือถือ */
+    }
+    .corner-box h1 {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        white-space: normal;
+    }
+    .corner-box h1 .tagline {
+        font-size: 1.0em; /* ขยาย tagline บนมือถือ */
+        margin-top: 5px;
+    }
+    .corner-box p {
+        font-size: 0.9em;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        margin-top: 0;
+    }
+}
+
+/* --- เพิ่มเติม: การปรับแต่งสำหรับหน้าจอขนาดเล็กมากๆ (มือถือขนาดเล็ก) --- */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 24px;
+    }
+    .menu {
+        flex-direction: column; /* จัดเมนูเป็นแนวตั้ง */
+        gap: 8px; /* ลดระยะห่างระหว่างเมนู */
+        align-items: center;
+    }
+    .menu a {
+        padding: 5px 8px;
+    }
+    nav {
+        padding: 0.5rem 0; /* ลด padding Navbar */
+    }
+    .main-content-wrapper {
+        padding-top: 10px;
+        min-height: calc(100vh - 60px); /* ปรับความสูงขั้นต่ำตาม Navbar ใหม่ */
+    }
+    .corner-box {
+        margin-top: -250px; /* ปรับดึงขึ้นสำหรับจอเล็กสุด */
+        margin-left: 0; /* ยกเลิก margin-left */
+        max-width: 95%; /* จำกัดความกว้างไม่ให้ล้นจอ */
+    }
+    .corner-box h1 {
+        font-size: 1.0em; /* ลดขนาด h1 บนจอเล็กสุด */
+        margin-bottom: 10px;
+    }
+    .corner-box h1 .tagline {
+        font-size: 0.9em; /* ลดขนาด tagline บนจอเล็กสุด */
+    }
+    .corner-box p {
+        font-size: 0.8em; /* ลดขนาด p บนจอเล็กสุด */
+        line-height: 1.4;
+        margin-bottom: 15px;
+    }
+    .btn {
+        padding: 8px 18px;
+        font-size: 0.85em;
+    }
+}
+.logo {
+    /* โค้ดเดิม... */
+    transition: all 0.3s ease; /* เพิ่ม transition */
+}
+
+.logo:hover {
+    color: #ffd700; /* เปลี่ยนเป็นสีทอง */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5); /* เพิ่มเงาเรืองแสง */
+    transform: scale(1.05); /* ขยายเล็กน้อย */
+}
+nav {
+    background-color: rgba(30, 30, 30, 0.9); /* สีดำเข้มโปร่งแสง */
+    color: #E0E0E0;
+    padding: 1rem 0;
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #5A5A5A; /* เพิ่มขอบด้านล่างให้ดูแข็งแรง */
+}
